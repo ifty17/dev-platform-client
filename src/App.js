@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./pages/Home/Home/Home";
 
 function App() {
   return (
-    <div>
-      <h1 className='text-5xl'>Hello World</h1>
+    <div className="max-w-[1440px] mx-auto">
+      <Home></Home>
     </div>
   );
 }
