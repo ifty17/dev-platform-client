@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AiFillHome, AiFillMessage } from "react-icons/ai";
 import { TfiLayoutMediaOverlay } from "react-icons/tfi";
 import { ImProfile } from "react-icons/im";
 import { GrLogin, GrLogout } from "react-icons/gr";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+   const handleLogOut = () => {
+     logOut()
+       .then(() => {})
+       .catch((error) => console.error(error));
+   };
 
     const navItems = (
       <React.Fragment>
@@ -33,58 +42,84 @@ const Navbar = () => {
           </span>
           <span>Message </span>
         </Link>
-        <button className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
+
+        {
+          user?.uid?
+        <button onClick={handleLogOut} className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
           <span>
             <GrLogout className="text-2xl"></GrLogout>
           </span>
           <span>Logout</span>
         </button>
+        :
         <Link to='/login' className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
           <span>
             <GrLogin className="text-2xl"></GrLogin>
           </span>
           <span>Login </span>
         </Link>
+        }
       </React.Fragment>
     );
+
+
     const nav = (
       <React.Fragment>
-        <Link to='/' className=" flex flex-row ml-3 items-center gap-2 ">
+        <Link to="/" className=" flex flex-row ml-3 items-center gap-2 ">
           <span>
             <AiFillHome className="text-2xl"></AiFillHome>
           </span>
           <span className="">Home</span>
         </Link>
-        <Link to='/media' className="py-2 flex flex-row ml-3 items-center gap-2">
+        <Link
+          to="/media"
+          className="py-2 flex flex-row ml-3 items-center gap-2"
+        >
           <span>
             <TfiLayoutMediaOverlay className="text-2xl"></TfiLayoutMediaOverlay>
           </span>
           <span>Media </span>
         </Link>
-        <Link to='/about' className="py-2 flex flex-row ml-3 items-center gap-2">
+        <Link
+          to="/about"
+          className="py-2 flex flex-row ml-3 items-center gap-2"
+        >
           <span>
             <ImProfile className="text-2xl"></ImProfile>
           </span>
           <span>About</span>
         </Link>
-        <Link to='/message' className="py-2 flex flex-row ml-3 items-center gap-2">
+        <Link
+          to="/message"
+          className="py-2 flex flex-row ml-3 items-center gap-2"
+        >
           <span>
             <AiFillMessage className="text-2xl"></AiFillMessage>
           </span>
           <span>Message </span>
         </Link>
-        <button className="py-2 flex flex-row ml-3 items-center gap-2">
-          <span>
-            <GrLogout className="text-2xl"></GrLogout>
-          </span>
-          <span>Logout </span>
-        </button>
-        <Link to='/login' className="py-2 flex flex-row ml-3 items-center gap-2">
-          <span>
-            <GrLogin className="text-2xl"></GrLogin>
-          </span>
-          <span>Login</span>
-        </Link>
+
+        {user?.uid ? (
+          <button
+            onClick={handleLogOut}
+            className="py-2 flex flex-row ml-3 items-center gap-2"
+          >
+            <span>
+              <GrLogout className="text-2xl"></GrLogout>
+            </span>
+            <span>Logout </span>
+          </button>
+        ) : (
+          <Link
+            to="/login"
+            className="py-2 flex flex-row ml-3 items-center gap-2"
+          >
+            <span>
+              <GrLogin className="text-2xl"></GrLogin>
+            </span>
+            <span>Login</span>
+          </Link>
+        )}
       </React.Fragment>
     );
 

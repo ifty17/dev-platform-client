@@ -1,5 +1,5 @@
 import React from 'react';
-import profile from '../../../assets/profile.jpg'
+import profile from '../../../assets/profile.jpg';
 import { MdAddPhotoAlternate, MdOutlineVideoLibrary } from "react-icons/md";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { RiArticleLine } from "react-icons/ri";
@@ -55,19 +55,19 @@ const Post = () => {
           >
             <p className="flex gap-2 hover:bg-zinc-200 p-2 rounded-md">
               <MdAddPhotoAlternate className="text-2xl text-sky-600"></MdAddPhotoAlternate>{" "}
-              <span>Photo</span>
+              <span className="text-stone-700">Photo</span>
             </p>
             <p className="flex gap-2 hover:bg-zinc-200 p-2 rounded-md">
               <MdOutlineVideoLibrary className="text-2xl text-green-600"></MdOutlineVideoLibrary>{" "}
-              <span>Video</span>
+              <span className="text-stone-700">Video</span>
             </p>
             <p className="flex gap-2 hover:bg-zinc-200 p-2 rounded-md">
               <BsFillCalendarDateFill className="text-2xl text-yellow-600"></BsFillCalendarDateFill>{" "}
-              <span>Event</span>
+              <span className="text-stone-700">Event</span>
             </p>
             <p className="flex gap-2 hover:bg-zinc-200 p-2 rounded-md">
               <RiArticleLine className="text-2xl text-orange-700"></RiArticleLine>{" "}
-              <span>Write article</span>
+              <span className="text-stone-700">Write article</span>
             </p>
           </label>
           <input type="checkbox" id="post-modal" className="modal-toggle" />
@@ -81,11 +81,12 @@ const Post = () => {
               </label>
               <form onSubmit={handlePost}>
                 <div>
+                  <h3 className="text-xl pb-2 pt-3">Create A Post</h3>
                   <textarea
                     required
                     name="postText"
                     className="textarea textarea-bordered w-full"
-                    placeholder="Bio"
+                    placeholder="Start a post"
                   ></textarea>
                   <h3 className="text-xl pb-2 pt-3">Upload an Image</h3>
                   <input
@@ -97,7 +98,7 @@ const Post = () => {
                     className="file-input file-input-bordered file-input-sm  max-w-xs"
                   />
                 </div>
-                <button type="submit" className="modal-action">
+                <button type="submit" className="modal-action  w-full">
                   <label htmlFor="post-modal" className="btn">
                     Post!
                   </label>

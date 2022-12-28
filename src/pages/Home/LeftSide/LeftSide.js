@@ -7,8 +7,10 @@ const LeftSide = () => {
         <div className="px-3 py-5">
           <img className="w-[25%] mx-auto rounded-full" src={profile} alt="" />
           <div className="text-center">
-            <h2 className="text-xl">Name</h2>
-            <p>Mern Stack Developer || Front-end Developer</p>
+            <h2 className="text-xl text-stone-700">Name</h2>
+            <p className="text-stone-700">
+              Mern Stack Developer || Front-end Developer
+            </p>
           </div>
         </div>
       </div>
