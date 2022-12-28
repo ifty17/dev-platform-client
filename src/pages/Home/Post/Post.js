@@ -8,6 +8,22 @@ import RightSide from '../RightSide/RightSide';
 
 
 const Post = () => {
+
+  const handlePost = (event) =>{
+    event.preventDefault();
+    const form = event.target;
+    const postText = form.postText.value;
+    const photoURL = form.image.files[0];
+    
+
+    // const formData = new FormData();
+    // formData.append("photoURL", photoURL);
+
+    console.log(postText, photoURL);
+
+
+  }
+
     return (
       <div className="md:flex gap-5 mt-5 md:mx-10">
         <LeftSide></LeftSide>
@@ -43,31 +59,42 @@ const Post = () => {
               <span>Write article</span>
             </p>
           </label>
-        <input type="checkbox" id="post-modal" className="modal-toggle" />
-        <div className="modal sm:modal-middle ">
-          <div className="modal-box">
-            <label
-              htmlFor="post-modal"
-              className="btn btn-sm btn-circle absolute right-2 top-2"
-            >
-              ✕
-            </label>
-            <h3 className="font-bold text-lg">
-              Congratulations random Internet user!
-            </h3>
-            <p className="py-4">
-              You've been selected for a chance to get one year of subscription
-              to use Wikipedia for free!
-            </p>
-            <div className="modal-action">
-              <label htmlFor="post-modal" className="btn">
-                Yay!
+          <input type="checkbox" id="post-modal" className="modal-toggle" />
+          <div className="modal sm:modal-middle ">
+            <div className="modal-box">
+              <label
+                htmlFor="post-modal"
+                className="btn btn-sm btn-circle absolute right-2 top-2"
+              >
+                ✕
               </label>
+              <form onSubmit={handlePost}>
+                <div>
+                  <textarea
+                    required
+                    name="postText"
+                    className="textarea textarea-bordered w-full"
+                    placeholder="Bio"
+                  ></textarea>
+                  <h3 className="text-xl pb-2 pt-3">Upload an Image</h3>
+                  <input
+                    required
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                    className="file-input file-input-bordered file-input-sm  max-w-xs"
+                  />
+                </div>
+                <button type="submit" className="modal-action">
+                  <label htmlFor="post-modal" className="btn">
+                    Post!
+                  </label>
+                </button>
+              </form>
             </div>
           </div>
         </div>
-        </div>
-
 
         <RightSide></RightSide>
       </div>
