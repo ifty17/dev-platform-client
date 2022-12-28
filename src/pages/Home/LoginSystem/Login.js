@@ -40,7 +40,7 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        googleUser(user);
+        isUserAvailable(user);
         console.log(user.displayName, user.email);
         // isUserAvailable(user);
       })
@@ -50,6 +50,19 @@ const Login = () => {
       })
       .finally(() => {
         setLoading(false);
+      });
+  };
+
+  const isUserAvailable = (user) => {
+    fetch(`http://localhost:5000/users?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.length) {
+          toast.success("User loggedIn successfully");
+          return navigate("/");
+        }
+        googleUser(user);
       });
   };
 
