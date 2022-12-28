@@ -13,13 +13,24 @@ const Post = () => {
     event.preventDefault();
     const form = event.target;
     const postText = form.postText.value;
-    const photoURL = form.image.files[0];
-    
+    const image = form.image.files[0];
+    console.log(postText, image);
 
-    // const formData = new FormData();
-    // formData.append("photoURL", photoURL);
+    const formData = new FormData();
+    formData.append("image", image);
 
-    console.log(postText, photoURL);
+    const url =
+      "https://api.imgbb.com/1/upload?key=81c077d88a2ff4a629a342194065431e";
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data.display_url);
+      });
+
 
 
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { AiFillHome, AiFillMessage } from "react-icons/ai";
 import { TfiLayoutMediaOverlay } from "react-icons/tfi";
 import { ImProfile } from "react-icons/im";
+import { GrLogin, GrLogout } from "react-icons/gr";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -32,6 +33,18 @@ const Navbar = () => {
           </span>
           <span>Message </span>
         </Link>
+        <button className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
+          <span>
+            <GrLogout className="text-2xl"></GrLogout>
+          </span>
+          <span>Logout</span>
+        </button>
+        <Link to='/login' className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
+          <span>
+            <GrLogin className="text-2xl"></GrLogin>
+          </span>
+          <span>Login </span>
+        </Link>
       </React.Fragment>
     );
     const nav = (
@@ -54,11 +67,23 @@ const Navbar = () => {
           </span>
           <span>About</span>
         </Link>
-        <Link to='/message' className="flex flex-row ml-3 items-center gap-2">
+        <Link to='/message' className="py-2 flex flex-row ml-3 items-center gap-2">
           <span>
             <AiFillMessage className="text-2xl"></AiFillMessage>
           </span>
           <span>Message </span>
+        </Link>
+        <button className="py-2 flex flex-row ml-3 items-center gap-2">
+          <span>
+            <GrLogout className="text-2xl"></GrLogout>
+          </span>
+          <span>Logout </span>
+        </button>
+        <Link to='/login' className="py-2 flex flex-row ml-3 items-center gap-2">
+          <span>
+            <GrLogin className="text-2xl"></GrLogin>
+          </span>
+          <span>Login</span>
         </Link>
       </React.Fragment>
     );
