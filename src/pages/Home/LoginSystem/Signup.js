@@ -46,7 +46,7 @@ const Signup = () => {
           navigate(from, { replace: true });
           form.reset();
           setError("");
-          toast.success("User created successfully");
+          
 
           const user = {
             displayName: name,
@@ -66,6 +66,7 @@ const Signup = () => {
           .then(res => res.json())
           .then(data =>{
             console.log(data);
+            toast.success("User created successfully");
           });
 
         })

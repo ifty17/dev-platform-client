@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import profile from '../../../assets/profile.jpg';
 import { MdAddPhotoAlternate, MdOutlineVideoLibrary } from "react-icons/md";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { RiArticleLine } from "react-icons/ri";
 import LeftSide from '../LeftSide/LeftSide';
 import RightSide from '../RightSide/RightSide';
+import { AuthContext } from '../../../Context/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 
 const Post = () => {
+
+  const {user} = useContext(AuthContext);
 
   const handlePost = (event) =>{
     event.preventDefault();
     const form = event.target;
     const postText = form.postText.value;
     const image = form.image.files[0];
-    console.log(postText, image);
+    // console.log(postText, image);
 
     const formData = new FormData();
     formData.append("image", image);
@@ -29,6 +33,29 @@ const Post = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data.display_url);
+
+        const post = {
+          reactions: 0,
+          postText: postText,
+          photoURL: user?.photoURL,
+          displayName: user?.displayName,
+          postImage: data.data.display_url,
+          email: user.email
+        }
+        fetch("http://localhost:5000/post", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(post),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            toast.success("Your post has been Successful");
+            form.reset();
+          });
+
       });
 
 
@@ -98,10 +125,8 @@ const Post = () => {
                     className="file-input file-input-bordered file-input-sm  max-w-xs"
                   />
                 </div>
-                <button type="submit" className="modal-action  w-full">
-                  <label htmlFor="post-modal" className="btn">
+                <button type="submit" className="modal-action btn ">
                     Post!
-                  </label>
                 </button>
               </form>
             </div>
