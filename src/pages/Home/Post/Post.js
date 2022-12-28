@@ -23,6 +23,9 @@ const Post = () => {
     const formData = new FormData();
     formData.append("image", image);
 
+    let today = new Date().toLocaleString();
+    console.log(today);
+
     const url =
       "https://api.imgbb.com/1/upload?key=81c077d88a2ff4a629a342194065431e";
 
@@ -35,6 +38,7 @@ const Post = () => {
         console.log(data.data.display_url);
 
         const post = {
+          dateField: today,
           reactions: 0,
           postText: postText,
           photoURL: user?.photoURL,
@@ -58,8 +62,6 @@ const Post = () => {
 
       });
 
-
-
   }
 
     return (
@@ -68,7 +70,7 @@ const Post = () => {
 
         <div className="my-5 md:my-0 w-full md:w-[50%] md:h-[42%]  bg-white py-4 px-3 rounded-md shadow-xl">
           <div className="flex gap-2 justify-center items-center">
-            <img className="w-[8%] rounded-full" src={profile} alt="" />
+            <img className="w-[8%] rounded-full" src={user?.photoURL} alt="" />
             <label
               htmlFor="post-modal"
               className="w-full h-[10%] py-2 bg-zinc-200 px-2 rounded-lg text-stone-700 border border-stone-400"
