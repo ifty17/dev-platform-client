@@ -6,6 +6,7 @@ import { BiCommentDetail } from "react-icons/bi";
 import { TbListDetails } from "react-icons/tb";
 import { AuthContext } from '../../../Context/AuthProvider';
 import profile from '../../../assets/profile.jpg';
+import { toast } from 'react-hot-toast';
 
 const PostDetails = () => {
 
@@ -18,6 +19,33 @@ const PostDetails = () => {
         event.preventDefault();
         const form = event.target;
         const comment = form.comment.value;
+
+        let today = new Date().toLocaleString();
+        console.log(today);
+
+
+        const userComment = {
+          dateField: today,
+          photoURL: user?.photoURL,
+          displayName: user?.displayName,
+          email: user?.email,
+          comment
+        };
+
+        fetch("http://localhost:5000/comments", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userComment),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            toast.success("Comment posted successful");
+            form.reset();
+          });
+
 
     }
 
