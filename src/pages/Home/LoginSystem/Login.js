@@ -42,6 +42,7 @@ const Login = () => {
         const user = result.user;
         isUserAvailable(user);
         console.log(user.displayName, user.email);
+        navigate(from, { replace: true });
         // isUserAvailable(user);
       })
       .catch((error) => {

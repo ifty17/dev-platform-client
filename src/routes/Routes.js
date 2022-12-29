@@ -8,37 +8,37 @@ import Message from "../pages/Home/Message/Message";
 import Main from "../pages/layout/Main";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element:<Main></Main>,
-        children: [
-            {
-                path:'/',
-                element: <Home></Home>
-            },
-            {
-                path:'/media',
-                element: <Media></Media>
-            },
-            {
-                path:'/about',
-                element: <About></About>
-            },
-            {
-                path:'/message',
-                element: <Message></Message>
-            },
-            {
-                path:'/signup',
-                element: <Signup></Signup>
-            },
-            {
-                path:'/login',
-                element: <Login></Login>
-            },
-        ]
-        
-    }
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/media",
+        element: <Media></Media>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/message",
+        element: <Message></Message>,
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      
+    ],
+  },
 ]);
 
 

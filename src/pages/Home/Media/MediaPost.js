@@ -27,15 +27,14 @@ const MediaPost = ({post}) => {
 
         <div className="flex justify-evenly mt-4">
           <div className="flex flex-col justify-center items-center">
-            <span onClick={toggle}>
+            <button onClick={toggle}>
               <AiFillHeart
                 className={
-                  "text-2xl" +
-                  " text-red-700" +
+                  "text-2xl text-stone-700" +
                   (toggleClass ? "text-red-700" : "")
                 }
               />
-            </span>
+            </button>
             <span>Love</span>
           </div>
           <div className="flex flex-col  items-center justify-center ">
