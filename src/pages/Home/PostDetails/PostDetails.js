@@ -7,6 +7,8 @@ import { TbListDetails } from "react-icons/tb";
 import { AuthContext } from '../../../Context/AuthProvider';
 import profile from '../../../assets/profile.jpg';
 import { toast } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
+import CommentsById from './CommentsById';
 
 const PostDetails = () => {
 
@@ -14,6 +16,21 @@ const PostDetails = () => {
     const {user} = useContext(AuthContext);
     const {reactions, postText, photoURL, displayName, postImage, email, _id} = useLoaderData();
     console.log(photoURL);
+
+
+    const url = `http://localhost:5000/commentsbyid?commentId=${_id}`;
+
+    const { data: comments = [], refetch } = useQuery({
+      queryKey: ["comments", _id],
+      queryFn: async () => {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      },
+    });
+
+
+
 
     const handleComment = event =>{
         event.preventDefault();
@@ -25,6 +42,7 @@ const PostDetails = () => {
 
 
         const userComment = {
+          commentId: _id,
           dateField: today,
           photoURL: user?.photoURL,
           displayName: user?.displayName,
@@ -44,6 +62,7 @@ const PostDetails = () => {
             console.log(data);
             toast.success("Comment posted successful");
             form.reset();
+            refetch();
           });
 
 
@@ -104,22 +123,13 @@ const PostDetails = () => {
                 </button>
               </div>
             </form>
-            <div className='flex mt-3'>
-                <img className="w-[6%] h-[10%] rounded-full mr-3" src={profile} alt="" />
-              <div className='bg-stone-300 p-2 rounded-md'>
-                <div className='pb-2'>
-                  <p>Rahat Kabir Ifty</p>
-                  <p className="text-xs">iftyrahatkabir@gmail.com</p>
-                </div>
-                <p className='text-sm'>
-                  Database-as-a-Service (DBaaS) is a service that allows you to
-                  set up, deploy, and scale a database without worrying about
-                  on-premise physical hardware, software updates, and the
-                  details of configuring for performance. With DBaaS, a cloud
-                  provider does all that for you—and gets you up and running
-                  right away.
-                </p>
-              </div>
+            <div>
+              {
+                comments.map(cmt => <CommentsById
+                key={cmt._id}
+                cmt={cmt}
+                ></CommentsById>)
+              }
             </div>
           </div>
         </div>
