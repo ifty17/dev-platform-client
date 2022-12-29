@@ -75,7 +75,7 @@ const MostReactedPost = ({ post, refetch }) => {
           <span>Love</span>
         </div>
         <Link
-          // to={`/post/${_id}`}
+          to={`/post/${_id}`}
           className="flex flex-col  items-center justify-center "
         >
           <button>
@@ -84,7 +84,7 @@ const MostReactedPost = ({ post, refetch }) => {
           <span>Comment</span>
         </Link>
         <Link
-          // to={`/post/${_id}`}
+          to={`/post/${_id}`}
           className="flex flex-col items-center justify-center "
         >
           <TbListDetails className="text-2xl" />
@@ -92,9 +92,9 @@ const MostReactedPost = ({ post, refetch }) => {
         </Link>
       </div>
       <div className="w-full mt-2 h-[2%]  bg-zinc-200 px-2 rounded-lg text-stone-700 border border-stone-400">
-        {/* <Link to={`/post/${_id}`}> */}
+        <Link to={`/post/${_id}`}>
         <p>Write your comment here</p>
-        {/* </Link> */}
+        </Link>
       </div>
     </div>
   );

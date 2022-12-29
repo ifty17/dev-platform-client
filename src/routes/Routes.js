@@ -7,6 +7,7 @@ import Media from "../pages/Home/Media/Media";
 import Message from "../pages/Home/Message/Message";
 import PostDetails from "../pages/Home/PostDetails/PostDetails";
 import Main from "../pages/layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,19 +16,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/home",
-        element: <Home></Home>,
+        element: (
+          <PrivateRoute>
+            <Home></Home>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/media",
-        element: <Media></Media>,
+        element: (
+          <PrivateRoute>
+            <Media></Media>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/about",
-        element: <About></About>,
+        element: (
+          <PrivateRoute>
+            <About></About>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/message",
-        element: <Message></Message>,
+        element: (
+          <PrivateRoute>
+            <Message></Message>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/post/:id",
