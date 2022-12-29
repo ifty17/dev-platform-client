@@ -29,7 +29,7 @@ const PostDetails = () => {
       like,
     };
 
-    fetch(`http://localhost:5000/feeds/${id}`, {
+    fetch(`https://devplatform-server.vercel.app/feeds/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -60,7 +60,7 @@ const PostDetails = () => {
 
 
     
-    const url = `http://localhost:5000/commentsbyid?commentId=${_id}`;
+    const url = `https://devplatform-server.vercel.app/commentsbyid?commentId=${_id}`;
 
     const { data: comments = [], refetch } = useQuery({
       queryKey: ["comments", _id],
@@ -89,7 +89,7 @@ const PostDetails = () => {
           comment
         };
 
-        fetch("http://localhost:5000/comments", {
+        fetch("https://devplatform-server.vercel.app/comments", {
           method: "POST",
           headers: {
             "content-type": "application/json",

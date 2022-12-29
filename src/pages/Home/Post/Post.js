@@ -15,7 +15,7 @@ const Post = () => {
 const { data: posts = [], refetch } = useQuery({
   queryKey: ["posts"],
   queryFn: async () => {
-    const res = await fetch("http://localhost:5000/mostreacted");
+    const res = await fetch("https://devplatform-server.vercel.app/mostreacted");
     const data = await res.json();
     return data;
   },
@@ -57,7 +57,7 @@ const { data: posts = [], refetch } = useQuery({
           postImage: data.data.display_url,
           email: user.email,
         };
-        fetch("http://localhost:5000/post", {
+        fetch("https://devplatform-server.vercel.app/post", {
           method: "POST",
           headers: {
             "content-type": "application/json",

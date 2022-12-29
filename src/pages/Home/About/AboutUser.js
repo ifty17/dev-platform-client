@@ -15,7 +15,7 @@ const AboutUser = ({user}) => {
         event.preventDefault();
         console.log(userProfile);
 
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://devplatform-server.vercel.app/users/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

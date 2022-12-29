@@ -9,7 +9,7 @@ const About = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/users?email=${user?.email}`;
+    const url = `https://devplatform-server.vercel.app/users?email=${user?.email}`;
 
     const { data: users = [] } = useQuery({
       queryKey: ["users", user?.email],

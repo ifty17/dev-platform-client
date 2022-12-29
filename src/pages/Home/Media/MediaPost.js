@@ -28,7 +28,7 @@ const MediaPost = ({ post, refetch }) => {
       like,
     };
 
-    fetch(`http://localhost:5000/feeds/${id}`, {
+    fetch(`https://devplatform-server.vercel.app/feeds/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

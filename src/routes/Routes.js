@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import About from "../pages/Home/About/About";
+import Error from "../pages/Home/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Home/LoginSystem/Login";
 import Signup from "../pages/Home/LoginSystem/Signup";
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         path: "/post/:id",
 
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/post/${params.id}`),
+          fetch(`https://devplatform-server.vercel.app/post/${params.id}`),
         element: <PostDetails></PostDetails>,
       },
       {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Login></Login>,
+      },
+      {
+        path: "*",
+        element: <Error></Error>,
       },
     ],
   },

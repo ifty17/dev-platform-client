@@ -56,7 +56,7 @@ const Signup = () => {
             email,
           };
 
-          fetch("http://localhost:5000/users", {
+          fetch("https://devplatform-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
