@@ -10,7 +10,7 @@ const Media = () => {
 
     
 
-    const { data: posts = [] } = useQuery({
+    const { data: posts = [], refetch } = useQuery({
       queryKey: ["posts"],
       queryFn: async () => {
         const res = await fetch("http://localhost:5000/posts");
@@ -30,6 +30,7 @@ const Media = () => {
             posts?.map(post =><MediaPost
             key={post._id}
             post={post}
+            refetch={refetch}
             >
 
             </MediaPost>)

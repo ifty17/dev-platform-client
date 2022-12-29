@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const navItems = (
       <React.Fragment>
-        <Link to='/' className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
+        <Link to='/home' className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
           <span>
             <AiFillHome className="text-2xl"></AiFillHome>
           </span>
@@ -52,7 +52,7 @@ const Navbar = () => {
           <span>Logout</span>
         </button>
         :
-        <Link to='/login' className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
+        <Link to='/' className="flex flex-col justify-center items-center text-stone-700 hover:text-black">
           <span>
             <GrLogin className="text-2xl"></GrLogin>
           </span>
@@ -65,7 +65,7 @@ const Navbar = () => {
 
     const nav = (
       <React.Fragment>
-        <Link to="/" className=" flex flex-row ml-3 items-center gap-2 ">
+        <Link to="/home" className=" flex flex-row ml-3 items-center gap-2 ">
           <span>
             <AiFillHome className="text-2xl"></AiFillHome>
           </span>
@@ -111,7 +111,7 @@ const Navbar = () => {
           </button>
         ) : (
           <Link
-            to="/login"
+            to="/"
             className="py-2 flex flex-row ml-3 items-center gap-2"
           >
             <span>
@@ -150,7 +150,7 @@ const Navbar = () => {
               {nav}
             </ul>
           </div>
-          <Link to='/' className="md:mx-3 font-bold text-xl md:text-2xl text-stone-700 hover:text-black">
+          <Link to='/home' className="md:mx-3 font-bold text-xl md:text-2xl text-stone-700 hover:text-black">
             Dev Platform
           </Link>
         </div>

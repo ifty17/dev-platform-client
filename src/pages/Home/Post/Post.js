@@ -16,6 +16,9 @@ import samsung from "../../../assets/samsung.png";
 const Post = () => {
   const { user } = useContext(AuthContext);
 
+
+  
+
   const handlePost = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -142,73 +145,73 @@ const Post = () => {
             </div>
           </div>
 
-          <div className="mb-5  bg-white shadow-xl py-4 px-3 rounded-md">
-            <div className="flex">
-              <img className="w-[7%] rounded-full" src={profile} alt="" />
-              <div className="ml-2 w-full">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-stone-700">
-                    {/* {displayName} */}
-                    Rahat Kabir Ifty
-                  </h2>
-                  <p className="text-xs">
-                    {/* {dateField} */}
-                    12:00AM
-                  </p>
+              <div className="mb-5  bg-white shadow-xl py-4 px-3 rounded-md">
+                <div className="flex">
+                  <img className="w-[7%] rounded-full" src={profile} alt="" />
+                  <div className="ml-2 w-full">
+                    <div className="flex items-center justify-between">
+                      <h2 className="text-stone-700">
+                        {/* {displayName} */}
+                        Rahat Kabir Ifty
+                      </h2>
+                      <p className="text-xs">
+                        {/* {dateField} */}
+                        12:00AM
+                      </p>
+                    </div>
+                    <p className="w-[5px] text-stone-700 text-xs leading-3">
+                      {/* {email} */}
+                      iftyrahatkabir@gmail.com
+                    </p>
+                  </div>
                 </div>
-                <p className="w-[5px] text-stone-700 text-xs leading-3">
-                  {/* {email} */}
-                  iftyrahatkabir@gmail.com
+                <p className="pt-2 pb-1">
+                  {/* {postText.slice(0, 150) + "......."}{" "}
+                                  <Link to={`/post/${_id}`}>more</Link>{" "} */}
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Praesentium perspiciatis accusamus, dicta numquam nulla ea, alias
+                  eaque commodi expedita distinctio facere ut, necessitatibus quis.
+                  Quo minus numquam tenetur non corrupti unde consequuntur eaque
+                  error.
                 </p>
-              </div>
-            </div>
-            <p className="pt-2 pb-1">
-              {/* {postText.slice(0, 150) + "......."}{" "}
-                              <Link to={`/post/${_id}`}>more</Link>{" "} */}
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Praesentium perspiciatis accusamus, dicta numquam nulla ea, alias
-              eaque commodi expedita distinctio facere ut, necessitatibus quis.
-              Quo minus numquam tenetur non corrupti unde consequuntur eaque
-              error.
-            </p>
-            <img className="w-[50%] mx-auto pt-2" src={samsung} alt="" />
+                <img className="w-[50%] mx-auto pt-2" src={samsung} alt="" />
 
-            <div className="border-b-2 mt-2">
-              <p>0 reactions</p>
-            </div>
+                <div className="border-b-2 mt-2">
+                  <p>0 reactions</p>
+                </div>
 
-            <div className="flex justify-evenly mt-4">
-              <div className="flex flex-col justify-center items-center">
-                <button>
-                  <AiFillHeart
-                    className={"text-2xl hover:scale-110 duration-200"}
-                  />
-                </button>
-                <span>Love</span>
+                <div className="flex justify-evenly mt-4">
+                  <div className="flex flex-col justify-center items-center">
+                    <button>
+                      <AiFillHeart
+                        className={"text-2xl hover:scale-110 duration-200"}
+                      />
+                    </button>
+                    <span>Love</span>
+                  </div>
+                  <Link
+                    // to={`/post/${_id}`}
+                    className="flex flex-col  items-center justify-center "
+                  >
+                    <button>
+                      <BiCommentDetail className="text-2xl" />
+                    </button>
+                    <span>Comment</span>
+                  </Link>
+                  <Link
+                    // to={`/post/${_id}`}
+                    className="flex flex-col items-center justify-center "
+                  >
+                    <TbListDetails className="text-2xl" />
+                    <span>Details</span>
+                  </Link>
+                </div>
+                <div className="w-full mt-2 h-[2%]  bg-zinc-200 px-2 rounded-lg text-stone-700 border border-stone-400">
+                  {/* <Link to={`/post/${_id}`}> */}
+                  <p>Write your comment here</p>
+                  {/* </Link> */}
+                </div>
               </div>
-              <Link
-                // to={`/post/${_id}`}
-                className="flex flex-col  items-center justify-center "
-              >
-                <button>
-                  <BiCommentDetail className="text-2xl" />
-                </button>
-                <span>Comment</span>
-              </Link>
-              <Link
-                // to={`/post/${_id}`}
-                className="flex flex-col items-center justify-center "
-              >
-                <TbListDetails className="text-2xl" />
-                <span>Details</span>
-              </Link>
-            </div>
-            <div className="w-full mt-2 h-[2%]  bg-zinc-200 px-2 rounded-lg text-stone-700 border border-stone-400">
-              {/* <Link to={`/post/${_id}`}> */}
-              <p>Write your comment here</p>
-              {/* </Link> */}
-            </div>
-          </div>
         </div>
         <RightSide></RightSide>
       </div>

@@ -112,6 +112,7 @@ const PostDetails = () => {
             <form onSubmit={handleComment} className="pb-4">
               <div className="mt-3">
                 <textarea
+                required
                   name="comment"
                   className="textarea textarea-bordered w-full"
                   placeholder="Write your comment"

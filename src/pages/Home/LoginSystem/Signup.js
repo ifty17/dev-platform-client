@@ -10,7 +10,7 @@ const Signup = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [error, setError] = useState("");
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/home";
 
   const handleSignUp = (event) => {
     event.preventDefault();
