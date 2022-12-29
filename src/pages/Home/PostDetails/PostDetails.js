@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import RightSide from '../RightSide/RightSide';
 import { AiFillHeart } from "react-icons/ai";
@@ -18,6 +18,48 @@ const PostDetails = () => {
     console.log(photoURL);
 
 
+ const [like, setLike] = useState(reactions);
+
+  const increaseLike = (id) => {
+    setLike(like + 1);
+    // console.log(like);
+    // console.log(id);
+
+    const newLike = {
+      like,
+    };
+
+    fetch(`http://localhost:5000/feeds/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newLike),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          console.log(data);
+        }
+      });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     const url = `http://localhost:5000/commentsbyid?commentId=${_id}`;
 
     const { data: comments = [], refetch } = useQuery({
@@ -28,9 +70,6 @@ const PostDetails = () => {
         return data;
       },
     });
-
-
-
 
     const handleComment = event =>{
         event.preventDefault();
@@ -91,7 +130,7 @@ const PostDetails = () => {
 
             <div className="flex justify-evenly mt-4">
               <div className="flex flex-col justify-center items-center">
-                <button>
+                <button onClick={() => increaseLike(_id)}>
                   <AiFillHeart
                     className={"text-2xl hover:scale-110 duration-200"}
                   />
