@@ -17,27 +17,33 @@ const MediaPost = ({post}) => {
       dateField,
     } = post;
 
+    
+    
     const [like, setLike] = useState(0)
     console.log(like);
-    
-    
 
     const increaseLike = () =>{
+
+
       setLike(like + 1);
-      fetch(`http://localhost:5000/feeds/${_id}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(like),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.modifiedCount > 0) {
-            alert("user updated");
-            console.log(data);
-          }
-        });
+
+      
+
+
+    //   fetch(`http://localhost:5000/feeds/${_id}`, {
+    //     method: "PUT",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(like),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.modifiedCount > 0) {
+    //         alert("user updated");
+    //         console.log(data);
+    //       }
+    //     });
     }
     
     return (
@@ -58,9 +64,15 @@ const MediaPost = ({post}) => {
         </p>
         <img className="w-[50%] mx-auto pt-2" src={postImage} alt="" />
 
+
+
+
         <div className="border-b-2 mt-2">
           <p>{reactions} reactions</p>
         </div>
+
+
+
 
         <div className="flex justify-evenly mt-4">
           <div className="flex flex-col justify-center items-center">
