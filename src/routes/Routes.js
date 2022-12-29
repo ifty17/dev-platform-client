@@ -5,6 +5,7 @@ import Login from "../pages/Home/LoginSystem/Login";
 import Signup from "../pages/Home/LoginSystem/Signup";
 import Media from "../pages/Home/Media/Media";
 import Message from "../pages/Home/Message/Message";
+import PostDetails from "../pages/Home/PostDetails/PostDetails";
 import Main from "../pages/layout/Main";
 
 const router = createBrowserRouter([
@@ -29,6 +30,13 @@ const router = createBrowserRouter([
         element: <Message></Message>,
       },
       {
+        path: "/post/:id",
+
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/post/${params.id}`),
+        element: <PostDetails></PostDetails>,
+      },
+      {
         path: "/signup",
         element: <Signup></Signup>,
       },
@@ -36,7 +44,6 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
-      
     ],
   },
 ]);

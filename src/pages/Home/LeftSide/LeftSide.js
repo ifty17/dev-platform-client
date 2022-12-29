@@ -18,7 +18,7 @@ const LeftSide = () => {
       return data;
     },
   });
-  console.log(users);
+  // console.log(users);
 
     return (
       <div className="rounded-md md:w-[25%] h-[20%] bg-white shadow-xl">
